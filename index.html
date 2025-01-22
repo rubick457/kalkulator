@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body bgcolor="white">
+  <div class="kalkulator">
+    <input type="text" id="layar" disabled>
+    <div class="tombol">
+      <button onclick="tambah('7')">7</button>
+      <button onclick="tambah('8')">8</button>
+      <button onclick="tambah('9')">9</button>
+      <button onclick="backspace()"><</button>
+    
+      <button onclick="tambah('4')">4</button>
+      <button onclick="tambah('5')">5</button>
+      <button onclick="tambah('6')">6</button>
+      <button onclick="tambah('/')">/</button>
+      
+      <button onclick="tambah('1')">1</button>
+      <button onclick="tambah('2')">2</button>
+      <button onclick="tambah('3')">3</button>
+      <button onclick="tambah('*')">*</button>
+
+      <button onclick="tambah('0')">0</button>
+      <button onclick="clearLayar()">C</button>
+       <button onclick="tambah('.')">.</button>
+      <button onclick="tambah('+')">+</button>
+      <br>
+     
+      <button onclick="tambah('-')">-</button>
+      <button onclick="hitung()">=</button>
+     
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+}
+
+.kalkulator {
+  width: 250px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#layar {
+  width: 100%;
+  height: 40px;
+  font-size: 24px;
+  text-align: right;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tombol {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+button {
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #acc;
+}
+</style>
+
+<script>
+  let layar = document.getElementById('layar');
+let nilai = '';
+
+function tambah(angka) {
+  nilai += angka;
+  layar.value = nilai;
+}
+
+function clearLayar() {
+  nilai = '';
+  layar.value = nilai;
+}
+
+function hitung() {
+  try {
+    let hasil = eval(nilai);
+    layar.value = hasil;
+    nilai = hasil.toString();
+  } catch (error) {
+    layar.value = 'Error';
+    nilai = '';
+  }
+}
+
+function backspace() {
+  nilai = nilai.slice(0, -1);
+  layar.value = nilai;
+}
+</script>
